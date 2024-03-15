@@ -1,0 +1,54 @@
+{% extends 'core/base.html' %}
+{% block title %} {{ property.name }} {% endblock %}
+
+{% block content %}
+<div class="grid grid-cols-5 gap-6">
+    <div class="col-span-3">
+        <img src="{{property.image.url}}" class="rounded-xl" alt="">
+    </div>
+    <div class="col-span-2 p-6 bg-gray-100 rounded-xl">
+        <h1 class="mb-6 text-3xl">
+            {{property.name}}
+        </h1>
+        <p class="text-gray-500"><strong>Price: </strong>{{ property.price }}</p>
+        <p class="text-gray-500"><strong>Seller: </strong>{{ property.created_by.username }}</p>
+        
+        {% if property.description %}
+            <p class="text-gray-700">
+                <strong class="text-gray-500">Description: </strong><br>
+                {{ property.description }}
+            </p>
+        {% endif %}
+
+        {% if request.user == property.created_by %}
+        <div class="mt-6 p-6 bg-white rounded-xl">
+            <p>This is your property!</p>
+            <a href="{% url 'property:edit' property.id %}" class="inline-block mt-6 px-6 py-3 text-lg font-semibold bg-teal-500 text-white rounded-xl">EDIT</a>
+            <a href="{% url 'property:delete' property.id %}" class="inline-block mt-6 px-6 py-3 text-lg font-semibold bg-red-500 text-white rounded-xl">DELETE</a>
+        </div>
+        {% else %}
+        <a href="" class="inline-block mt-6 px-6 py-3 text-lg font-semibold bg-teal-500 text-white rounded-xl hover:bg-teal-700">Contact Seller</a>
+        {% endif %}
+    </div>
+</div>
+
+<div class="mt-6 px-6 py-12 bg-gray-100 rounded-xl">
+    <h2 class="mb-12 text-2xl text-center">Related property</h2>
+    <div class="grid grid-cols-3 gap-3">
+        {% for property in related_propertys %}
+        <div>
+            <a href="{% url 'property:detail' property.id %}">
+                <div class="">
+                    <img src="{{property.image.url }}" alt="" class="rounded-t-xl">
+                </div>
+                <div class="p-6 bg-white rounded-b-xl">
+                    <h2 class="text-2xl">{{property.name}}</h2>
+                    <p class="text-gray-500">Price: {{property.price}}</p>
+                </div>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

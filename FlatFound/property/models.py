@@ -17,7 +17,10 @@ class Property(models.Model):
     category = models.ForeignKey(
         Category, related_name='properties', on_delete=models.CASCADE)
     price_pcm = models.FloatField()
+    ppw = models.FloatField()
     address = models.TextField(blank=True, null=True)
+    postcode = models.TextField(blank=True, null=True)
+    description = models.TextField(blank=True, null=True)
     image = models.ImageField(upload_to='prop_images', blank=True, null=True)
     created_by = models.ForeignKey(User, related_name='properties', on_delete=models.CASCADE) # If the user is deleted then so are their properties.
     created_at = models.DateField(auto_now_add=True)

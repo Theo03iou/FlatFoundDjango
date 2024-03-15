@@ -1,18 +1,18 @@
 from django import forms
 
-from .models import Item
+from .models import Property
 
 INPUT_CLASSES = 'w-full py-4 px-6 rounded-xl border'
 
 class NewListingForm(forms.ModelForm):
     class Meta:
-        model = Item
-        fields = ('length', 'pcm', 'ppw', 'description', 'address', 'postcode', 'image',) 
+        model = Property
+        fields = ('category', 'price_pcm', 'ppw', 'description', 'address', 'postcode', 'image',) 
         widgets = {
-            'length': forms.Select(attrs={
+            'category': forms.Select(attrs={
                 'class': INPUT_CLASSES
         }),
-            'pcm': forms.TextInput(attrs={
+            'price_pcm': forms.TextInput(attrs={
                 'class': INPUT_CLASSES
         }),
             'ppw': forms.TextInput(attrs={
@@ -34,13 +34,13 @@ class NewListingForm(forms.ModelForm):
         
 class EditListingForm(forms.ModelForm):
     class Meta:
-        model = Item
-        fields = ('length', 'pcm', 'ppw', 'description', 'address', 'postcode', 'image',) 
+        model = Property
+        fields = ('category', 'price_pcm', 'ppw', 'description', 'address', 'postcode', 'image',) 
         widgets = {
-            'length': forms.Select(attrs={
+            'category': forms.Select(attrs={
                 'class': INPUT_CLASSES
         }),
-            'pcm': forms.TextInput(attrs={
+            'price_pcm': forms.TextInput(attrs={
                 'class': INPUT_CLASSES
         }),
             'ppw': forms.TextInput(attrs={
