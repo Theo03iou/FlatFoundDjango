@@ -31,9 +31,7 @@ def detail(request, pk):
     })
     
 @login_required
-def new(request, pk):
-    property = get_object_or_404(Property, pk=pk, created_by=request.user)
-    
+def new(request):
     if request.method == 'POST':
         form = NewListingForm(request.POST, request.FILES)
         
@@ -48,7 +46,8 @@ def new(request, pk):
     
     return render(request, 'property/form.html', {
         'form': form,
-        'title': 'New Property'    })
+        'title': 'New Property',
+        })
 
 @login_required
 def edit(request, pk):
