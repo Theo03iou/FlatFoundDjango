@@ -1,5 +1,5 @@
 {% extends 'core/base.html' %}
-{% block title %} {{ property.name }} {% endblock %}
+{% block title %} {{ property.price_pcm }} {% endblock %}
 
 {% block content %}
 <div class="grid grid-cols-5 gap-6">
@@ -8,9 +8,9 @@
     </div>
     <div class="col-span-2 p-6 bg-gray-100 rounded-xl">
         <h1 class="mb-6 text-3xl">
-            {{property.name}}
+            {{property.price_pcm}}
         </h1>
-        <p class="text-gray-500"><strong>Price: </strong>{{ property.price }}</p>
+        <p class="text-gray-500"><strong>ppw: </strong>{{ property.ppw }}</p>
         <p class="text-gray-500"><strong>Seller: </strong>{{ property.created_by.username }}</p>
         
         {% if property.description %}
@@ -42,8 +42,8 @@
                     <img src="{{property.image.url }}" alt="" class="rounded-t-xl">
                 </div>
                 <div class="p-6 bg-white rounded-b-xl">
-                    <h2 class="text-2xl">{{property.name}}</h2>
-                    <p class="text-gray-500">Price: {{property.price}}</p>
+                    <h2 class="text-2xl">{{property.price_pcm}}</h2>
+                    <p class="text-gray-500">ppw: {{property.ppw}}</p>
                 </div>
             </a>
         </div>
