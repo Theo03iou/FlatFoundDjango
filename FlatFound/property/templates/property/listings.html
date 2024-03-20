@@ -1,49 +1,40 @@
-{% extends 'core/base.html' %}
+ {% extends 'core/base.html' %}
 {% block title %} {{ property.price_pcm }} {% endblock %}
 
 {% block content %}
-<div class="grid grid-cols-5 gap-6">
+
+<div class="pb-6 grid grid-cols-4 gap-4 bg-gray-100">
+    <div class="col-span-1">
+        <form action="{% url 'property:properties' %}" method="get">
+            <input name="query" value="{{ query }}" type="text" class="w-full py-4 px-6 border rounded-xl" placeholder="Enter a Postcode">
+            <button class="mt-2 py-4 px-8 text-lg bg-teal-500 text-white rounded-xl">Search</button>
+        </form>
+        <hr class="my-6">
+        <p class="font-semibold">Tenancy Length</p>
+        <ul>
+            {% for category in categories %}
+                <li class="py-2 px-2 rounded-xl {% if category.id == category_id %} bg-gray-200 {% endif %}">
+                    <a href="{% url 'property:properties' %}?query={{ query }}&category={{ category.id }}"{{ category.name }}></a>
+                </li>
+                {% endfor %}
+        </ul>
+
+        <hr class="my-6">
+        <p class="font-semibold">Clear Filters</p>
+        <ul>
+            <li><a href="{% url 'property:properties' %}" class="mt-2 py-4 px-8 inline-block bg-yellow-500 text-lg rounded-xl text-white">Clear</a></li>
+        </ul>
+    </div>
     <div class="col-span-3">
-        <img src="{{property.image.url}}" class="rounded-xl" alt="">
-    </div>
-    <div class="col-span-2 p-6 bg-gray-100 rounded-xl">
-        <h1 class="mb-6 text-3xl">
-            {{property.price_pcm}}
-        </h1>
-        <p class="text-gray-500"><strong>ppw: </strong>{{ property.ppw }}</p>
-        <p class="text-gray-500"><strong>Seller: </strong>{{ property.created_by.username }}</p>
-        
-        {% if property.description %}
-            <p class="text-gray-700">
-                <strong class="text-gray-500">Description: </strong><br>
-                {{ property.description }}
-            </p>
-        {% endif %}
-
-        {% if request.user == property.created_by %}
-        <div class="mt-6 p-6 bg-white rounded-xl">
-            <p>This is your property!</p>
-            <a href="{% url 'property:edit' property.id %}" class="inline-block mt-6 px-6 py-3 text-lg font-semibold bg-teal-500 text-white rounded-xl">EDIT</a>
-            <a href="{% url 'property:delete' property.id %}" class="inline-block mt-6 px-6 py-3 text-lg font-semibold bg-red-500 text-white rounded-xl">DELETE</a>
-        </div>
-        {% else %}
-        <a href="" class="inline-block mt-6 px-6 py-3 text-lg font-semibold bg-teal-500 text-white rounded-xl hover:bg-teal-700">Contact Seller</a>
-        {% endif %}
-    </div>
-</div>
-
-<div class="mt-6 px-6 py-12 bg-gray-100 rounded-xl">
-    <h2 class="mb-12 text-2xl text-center">Related property</h2>
-    <div class="grid grid-cols-3 gap-3">
-        {% for property in related_propertys %}
+        {% for property in properties %}
         <div>
             <a href="{% url 'property:detail' property.id %}">
-                <div class="">
-                    <img src="{{property.image.url }}" alt="" class="rounded-t-xl">
+                <div>
+                    <img src="{{ property.image.url }}" alt="" class="rounded-t-xl">
                 </div>
                 <div class="p-6 bg-white rounded-b-xl">
-                    <h2 class="text-2xl">{{property.price_pcm}}</h2>
-                    <p class="text-gray-500">ppw: {{property.ppw}}</p>
+                    <h2 class="text-2xl">PCM: £{{ property.price_pcm }}</h2>
+                    <p class="text-gray-500">Postcode: {{ property.postcode }}</p>
                 </div>
             </a>
         </div>
@@ -51,4 +42,6 @@
     </div>
 </div>
 
-{% endblock %}
+{% endblock %} 
+
+

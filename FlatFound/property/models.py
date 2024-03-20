@@ -16,7 +16,7 @@ class Category(models.Model):
 class Property(models.Model):
     category = models.ForeignKey(
         Category, related_name='properties', on_delete=models.CASCADE)
-    price_pcm = models.FloatField()
+    price_pcm = models.IntegerField()
     ppw = models.FloatField()
     address = models.TextField(blank=True, null=True)
     postcode = models.TextField(blank=True, null=True)
