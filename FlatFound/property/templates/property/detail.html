@@ -51,4 +51,23 @@
     </div>
 </div>
 
+<div class="mt-6 px-6 py-12 bg-gray-100 rounded-xl">
+    <h2 class="mb-12 text-2xl text-center">Related properties</h2>
+    <div class="grid grid-cols-3 gap-3">
+        {% for property in properties %}
+        <div>
+            <a href="{% url 'property:detail' property.id %}">
+                <div class="">
+                    <img src="{{property.image.url }}" alt="" class="rounded-t-xl">
+                </div>
+                <div class="p-6 bg-white rounded-b-xl">
+                    <h2 class="text-2xl">{{property.price_pcm}}</h2>
+                    <p class="text-gray-500">ppw: {{property.ppw}}</p>
+                </div>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+</div> 
+
 {% endblock %}
