@@ -23,7 +23,6 @@ class Property(models.Model):
     address = models.TextField(blank=True, null=True)
     postcode = models.TextField(blank=True, null=True)
     description = models.TextField(blank=True, null=True)
-    pet_friendly = models.BooleanField(default=False)
     image = models.ImageField(upload_to='prop_images', blank=True, null=True)
     # If the user is deleted then so are their properties.
     created_by = models.ForeignKey(

@@ -7,7 +7,7 @@ INPUT_CLASSES = 'w-full py-4 px-6 rounded-xl border'
 class NewListingForm(forms.ModelForm):
     class Meta:
         model = Property
-        fields = ('category', 'price_pcm', 'ppw', 'address', 'postcode', 'description', 'pet_friendly', 'image',) 
+        fields = ('category', 'price_pcm', 'ppw', 'address', 'postcode', 'description', 'image',) 
         widgets = {
             'category': forms.Select(attrs={
                 'class': INPUT_CLASSES
@@ -27,7 +27,6 @@ class NewListingForm(forms.ModelForm):
             'description': forms.Textarea(attrs={
                 'class': INPUT_CLASSES
         }),
-            'pet_friendly': forms.BooleanField(),
             'image': forms.FileInput(attrs={
                 'class': INPUT_CLASSES
         }),
@@ -36,7 +35,7 @@ class NewListingForm(forms.ModelForm):
 class EditListingForm(forms.ModelForm):
     class Meta:
         model = Property
-        fields = ('category', 'price_pcm', 'ppw', 'address', 'postcode', 'description', 'pet_friendly', 'image',) 
+        fields = ('category', 'price_pcm', 'ppw', 'address', 'postcode', 'description', 'image',) 
         widgets = {
             'category': forms.Select(attrs={
                 'class': INPUT_CLASSES
@@ -56,7 +55,6 @@ class EditListingForm(forms.ModelForm):
             'description': forms.Textarea(attrs={
                 'class': INPUT_CLASSES
         }),
-            'pet_friendly': forms.BooleanField(),
             'image': forms.FileInput(attrs={
                 'class': INPUT_CLASSES
         }),
