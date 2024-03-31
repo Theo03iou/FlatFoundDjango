@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.db.models import Q
 from django.contrib.auth.decorators import login_required
+from django.http import HttpResponseRedirect
 
 from .forms import NewListingForm, EditListingForm
 from .models import Category, Property
@@ -85,3 +86,18 @@ def delete(request, pk):
     property.delete()
 
     return redirect('dashboard:index')
+
+
+@login_required
+def favourite_add(request, id):
+    property = get_object_or_404(Property, id=id)
+    if property.favourites.filter(id=request.user.id).exists():
+        property.favourites.remove(request.user)
+    else:
+        property.favourites.add(request.user)
+    return HttpResponseRedirect(request.META['HTTP_REFERER'])
+
+@login_required
+def favourite_list(request):
+    new = Property.objects.filter(favourites=request.user)
+    return render(request,'property/favourites.html', {'new': new})
