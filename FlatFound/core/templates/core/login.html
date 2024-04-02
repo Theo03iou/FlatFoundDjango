@@ -30,5 +30,12 @@
 
         <button class="py-4 px-8 text-lg bg-teal-500 hover:bg-teal-700 rounded-xl text-white">Submit</button>
     </form>
+
+    <div class="my-6 mx-auto p-6 bg-gray-100 rounded-xl">
+        <h1 class="mb-6 text-xl">If you don't have an account already: <a href="{% url 'core:signup' %}" class="py-3 px-3 bg-teal-500 hover:bg-teal-700 rounded-xl text-white">Sign up</a>
+        </h1>
+    </div>       
+     <!-- <a href="{% url 'core:signup' %}" class="py-8 px-8 text-lg bg-teal-500 hover:bg-teal-700 rounded-xl text-white">Sign up</a> -->
+
 </div>
 {% endblock %}
