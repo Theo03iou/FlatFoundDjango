@@ -10,8 +10,12 @@
         <h1 class="mb-6 text-3xl">
             {{property.price_pcm}}
         </h1>
-        <p class="text-gray-500"><strong>ppw: </strong>{{ property.ppw }}</p>
+        <p class="text-gray-500"><strong>ppw: </strong>£{{ property.ppw }}</p>
         <p class="text-gray-500"><strong>Seller: </strong>{{ property.created_by.username }}</p>
+        <p class="text-gray-500"><strong>Number of Bedrooms: </strong>{{ property.num_beds }}</p>
+        <p class="text-gray-500"><strong>Pet Friendly: </strong>{{ property.pet_friendly }}</p>
+        <p class="text-gray-500"><strong>Address: </strong>{{ property.address }}</p>
+        <p class="text-gray-500"><strong>Postcode: </strong>{{ property.postcode }}</p>
         
         {% if property.description %}
             <p class="text-gray-700">
