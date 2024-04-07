@@ -1,6 +1,11 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
+from django.core.exceptions import ValidationError
+
+def fdmgroup_email_validator(value):
+    if not value.endswith("@fdmgroup.com"):
+        raise ValidationError("Email must end with @fdmgroup.com")
 
 class LoginForm(AuthenticationForm):
     username = forms.CharField(widget=forms.TextInput(attrs={
@@ -21,8 +26,8 @@ class SignupForm(UserCreationForm):
         'placeholder': 'Your Username',
         'class': 'w-full py-4 px-6 rounded-xl'
     }))
-    email = forms.CharField(widget=forms.EmailInput(attrs={
-        'placeholder': 'Your email',
+    email = forms.CharField(validators=[fdmgroup_email_validator], widget=forms.EmailInput(attrs={
+        'placeholder': 'Your email @fdmgroup.com',
         'class': 'w-full py-4 px-6 rounded-xl'
     }))
     password1 = forms.CharField(widget=forms.PasswordInput(attrs={
