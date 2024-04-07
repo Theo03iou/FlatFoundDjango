@@ -6,104 +6,104 @@
 
 <div class="flex">
 
-```
-<div class="w-1/4 p-4 bg-gray-100 rounded-xl mr-6">
-    <h3 class="mb-4 text-xl font-semibold">Filters</h3>
-    <form method="get">
+    <!-- Filter Section with added right margin -->
+    <div class="w-1/4 p-4 bg-gray-100 rounded-xl mr-6">
+        <h3 class="mb-4 text-xl font-semibold">Filters</h3>
+        <form method="get">
+            <!-- Existing filters... -->
 
-        <!-- Bedrooms Filter -->
-        <label for="bedrooms" class="block mb-2">Bedrooms</label>
-        <select name="bedrooms" id="bedrooms" class="mb-4 w-full p-2 border rounded">
-            <option value="">Any</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4+">4+</option>
-        </select>
+            <!-- Bedrooms Filter -->
+            <label for="bedrooms" class="block mb-2">Bedrooms</label>
+            <select name="bedrooms" id="bedrooms" class="mb-4 w-full p-2 border rounded">
+                <!-- Example static options -->
+                <option value="">Any</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4+">4+</option>
+            </select>
 
-        <!-- Beds Filter -->
-        <label for="beds" class="block mb-2">Beds</label>
-        <select name="beds" id="beds" class="mb-4 w-full p-2 border rounded">
-            <option value="">Any</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4+">4+</option>
-        </select>
+            <!-- Beds Filter -->
+            <label for="beds" class="block mb-2">Beds</label>
+            <select name="beds" id="beds" class="mb-4 w-full p-2 border rounded">
+                <option value="">Any</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4+">4+</option>
+            </select>
 
-        <!-- Bathrooms Filter -->
-        <label for="bathrooms" class="block mb-2">Bathrooms</label>
-        <select name="bathrooms" id="bathrooms" class="mb-4 w-full p-2 border rounded">
-            <option value="">Any</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3+">3+</option>
-        </select>
+            <!-- Bathrooms Filter -->
+            <label for="bathrooms" class="block mb-2">Bathrooms</label>
+            <select name="bathrooms" id="bathrooms" class="mb-4 w-full p-2 border rounded">
+                <option value="">Any</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3+">3+</option>
+            </select>
 
-        <label for="property_type" class="block mb-2">Property Type</label>
-        <select name="property_type" id="property_type" class="mb-4 w-full p-2 border rounded">
-            <option value="">Any</option>
-            <option value="house">House</option>
-            <option value="flat">Flat</option>
-            <option value="guest_house">Guest House</option>
-            <option value="hotel">Hotel</option>
-        </select>
+            <label for="property_type" class="block mb-2">Property Type</label>
+            <select name="property_type" id="property_type" class="mb-4 w-full p-2 border rounded">
+                <option value="">Any</option>
+                <option value="house">House</option>
+                <option value="flat">Flat</option>
+                <option value="guest_house">Guest House</option>
+                <option value="hotel">Hotel</option>
+            </select>
 
-        <!-- Price Filter -->
-        <label for="price" class="block mb-2">Price</label>
-        <select name="price" id="price" class="mb-4 w-full p-2 border rounded">
-            <option value="low_to_high">Low to High</option>
-            <option value="high_to_low">High to Low</option>
-        </select>
+            <!-- Price Filter -->
+            <label for="price" class="block mb-2">Price</label>
+            <select name="price" id="price" class="mb-4 w-full p-2 border rounded">
+                <option value="low_to_high">Low to High</option>
+                <option value="high_to_low">High to Low</option>
+            </select>
 
-        <!-- Tenancy Length Filter -->
-        <label for="tenancy_length" class="block mb-2">Tenancy Length</label>
-        <select name="tenancy_length" id="tenancy_length" class="mb-4 w-full p-2 border rounded">
-            <option value="3_months">3 Months</option>
-            <option value="6_months">6 Months</option>
-            <option value="12_months">12 Months</option>
-            <option value="24_months">24 Months</option>
-        </select>
+            <!-- Tenancy Length Filter -->
+            <label for="tenancy_length" class="block mb-2">Tenancy Length</label>
+            <select name="tenancy_length" id="tenancy_length" class="mb-4 w-full p-2 border rounded">
+                <!-- Example dummy options -->
+                <option value="3_months">3 Months</option>
+                <option value="6_months">6 Months</option>
+                <option value="12_months">12 Months</option>
+                <option value="24_months">24 Months</option>
+            </select>
 
-        <!-- Postcode Filter -->
-        <label for="postcode" class="block mb-2">Postcode</label>
-        <input type="text" name="postcode" id="postcode" class="mb-4 w-full p-2 border rounded" placeholder="Enter postcode">
+            <!-- Postcode Filter -->
+            <label for="postcode" class="block mb-2">Postcode</label>
+            <input type="text" name="postcode" id="postcode" class="mb-4 w-full p-2 border rounded" placeholder="Enter postcode">
 
-        <!-- Radius Slider with Output to the Right -->
-        <div class="flex items-center mb-4">
-            <label for="radius" class="block mr-2">Radius (km)</label>
-            <input type="range" name="radius" id="radius" min="0" max="50" class="w-full" oninput="radiusValue.value=radius.value">
-            <output id="radiusValue" class="flex-none text-center w-12 ml-2">{{ radius|default:"25" }}</output>
-        </div>
-
-        <button type="button" class="w-full py-2 px-4 bg-teal-500 text-white rounded">Apply Filters</button>
-    </form>
-</div>
-
-<div class="w-3/4">
-    <div class="mt-6 px-6 py-12 bg-gray-100 rounded-xl">
-        <h2 class="mb-12 text-2xl text-center">Newest Listings</h2>
-        <div class="grid grid-cols-3 gap-3 mt-6">
-            {% for property in properties %}
-            <div>
-                <a href="{% url 'property:detail' property.id %}">
-                    <div>
-                        <img src="{{ property.image.url }}" alt="" class="rounded-t-xl">
-                    </div>
-                    <div class="p-6 bg-white rounded-b-xl">
-                        <h2 class="text-2xl">PCM: £{{property.price_pcm}}</h2>
-                        <h2 class="text-1xl">Tenancy Length: {{property.category}} </h2>
-                        <p class="text-gray-500">{{property.postcode}}</p>
-                    </div>
-                </a>
+            <!-- Radius Slider with Output to the Right -->
+            <div class="flex items-center mb-4">
+                <label for="radius" class="block mr-2">Radius (km)</label>
+                <input type="range" name="radius" id="radius" min="0" max="50" class="w-full" oninput="radiusValue.value=radius.value">
+                <output id="radiusValue" class="flex-none text-center w-12 ml-2">{{ radius|default:"25" }}</output>
             </div>
-            {% endfor %}
+            
+            <button type="button" class="w-full py-2 px-4 bg-teal-500 text-white rounded">Apply Filters</button>
+        </form>
+    </div>
+
+    <div class="w-3/4">
+        <div class="mt-6 px-6 py-12 bg-gray-100 rounded-xl">
+            <h2 class="mb-12 text-2xl text-center">Newest Listings</h2>
+            <div class="grid grid-cols-3 gap-3 mt-6">
+                {% for property in properties %}
+                <div>
+                    <a href="{% url 'property:detail' property.id %}">
+                        <div>
+                            <img src="{{ property.image.url }}" alt="" class="rounded-t-xl">
+                        </div>
+                        <div class="p-6 bg-white rounded-b-xl">
+                            <h2 class="text-2xl">PCM: £{{property.price_pcm}}</h2>
+                            <h2 class="text-1xl">Tenancy Length: {{property.category}} </h2>
+                            <p class="text-gray-500">{{property.postcode}}</p>
+                        </div>
+                    </a>
+                </div>
+                {% endfor %}
+            </div>
         </div>
     </div>
 </div> 
-
-```
-
-</div>
 
 {% endblock %}
