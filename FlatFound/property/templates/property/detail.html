@@ -1,71 +1,89 @@
 {% extends 'core/base.html' %}
-{% load static %} {# Ensure you have this at the top if you're using static files #}
-{% block title %} {{ property.description }} {% endblock %}
+{% load static %}
+
+{% block title %}{{ property.description }}{% endblock %}
 
 {% block content %}
 <div class="grid grid-cols-5 gap-6">
-<div class="col-span-3">
-<img src="{{ property.image.url }}" class="rounded-xl" alt="">
-</div>
-<div class="col-span-2 p-6 bg-gray-100 rounded-xl">
-<h1 class="text-3xl mb-4">Property Details</h1>
-<div class="bg-white rounded-xl p-4 mb-6">
-<h2 class="text-xl font-semibold mb-2">Description</h2>
-<p class="text-gray-700">{{ property.description }}</p>
-</div>
+    <div class="col-span-3">
+        <img src="{{ property.image.url }}" class="rounded-xl" alt="">
+    </div>
+    <div class="col-span-2 p-6 bg-gray-100 rounded-xl">
+        <h1 class="text-3xl mb-4">Property Details</h1>
+        <div class="bg-white rounded-xl p-4 mb-6">
+            <h2 class="text-xl font-semibold mb-2">Description</h2>
+            <p class="text-gray-700">{{ property.description }}</p>
+        </div>
 
-```
-    <div class="grid grid-cols-2 gap-4 mb-6">
-        <div class="bg-white rounded-xl p-4 flex items-center">
-            <i class="fas fa-pound-sign text-lg text-gray-500 mr-2"></i>
-            <div>
-                <p class="font-semibold">Price per week</p>
-                <p>{{ property.ppw }}</p>
+        <div class="grid grid-cols-2 gap-4 mb-6">
+            <div class="bg-white rounded-xl p-4 flex items-center">
+                <i class="fas fa-pound-sign text-lg text-gray-500 mr-2"></i>
+                <div>
+                    <p class="font-semibold">Price per week</p>
+                    <p>{{ property.ppw }}</p>
+                </div>
+            </div>
+            <div class="bg-white rounded-xl p-4 flex items-center">
+                <i class="fas fa-user text-lg text-gray-500 mr-2"></i>
+                <div>
+                    <p class="font-semibold">Seller</p>
+                    <p>{{ property.created_by.username }}</p>
+                </div>
             </div>
         </div>
-        <div class="bg-white rounded-xl p-4 flex items-center">
-            <i class="fas fa-user text-lg text-gray-500 mr-2"></i>
-            <div>
-                <p class="font-semibold">Seller</p>
-                <p>{{ property.created_by.username }}</p>
-            </div>
-        </div>
-    </div>
 
-    <div class="grid grid-cols-2 gap-4 mb-6">
-        <div class="bg-white rounded-xl p-4 flex items-center">
-            <i class="fas fa-map-marker-alt text-lg text-gray-500 mr-2"></i>
-            <div>
-                <p class="font-semibold">Postcode</p>
-                <p>{{ property.postcode }}</p>
+        <div class="grid grid-cols-2 gap-4 mb-6">
+            <div class="bg-white rounded-xl p-4 flex items-center">
+                <i class="fas fa-map-marker-alt text-lg text-gray-500 mr-2"></i>
+                <div>
+                    <p class="font-semibold">Postcode</p>
+                    <p>{{ property.postcode }}</p>
+                </div>
+            </div>
+            <div class="bg-white rounded-xl p-4 flex items-center">
+                <i class="fas fa-calendar-alt text-lg text-gray-500 mr-2"></i>
+                <div>
+                    <p class="font-semibold">Tenancy Length</p>
+                    <p>{{ property.category.name }}</p>
+                </div>
             </div>
         </div>
-        <div class="bg-white rounded-xl p-4 flex items-center">
-            <i class="fas fa-calendar-alt text-lg text-gray-500 mr-2"></i>
-            <div>
-                <p class="font-semibold">Tenancy Length</p>
-                <p>{{ property.category.name }}</p>
-            </div>
-        </div>
-    </div>
 
-    {% if request.user == property.created_by %}
-    <div class="bg-white rounded-xl p-4 text-center">
-        <p>This is your property!</p>
-        <div class="flex justify-around mt-4">
-            <a href="{% url 'property:edit' property.id %}" class="px-6 py-3 text-lg font-semibold bg-teal-500 text-white rounded-xl">EDIT</a>
-            <a href="{% url 'property:delete' property.id %}" class="px-6 py-3 text-lg font-semibold bg-red-500 text-white rounded-xl">DELETE</a>
+        {% if request.user == property.created_by %}
+        <div class="bg-white rounded-xl p-4 text-center">
+            <p>This is your property!</p>
+            <div class="flex justify-around mt-4">
+                <a href="{% url 'property:edit' property.id %}" class="px-6 py-3 text-lg font-semibold bg-teal-500 text-white rounded-xl">EDIT</a>
+                <a href="{% url 'property:delete' property.id %}" class="px-6 py-3 text-lg font-semibold bg-red-500 text-white rounded-xl">DELETE</a>
+            </div>
         </div>
+        {% else %}
+        <div class="text-center">
+            <a href="" class="inline-block mt-6 px-6 py-3 text-lg font-semibold bg-teal-500 text-white rounded-xl hover:bg-teal-700">Contact Seller</a>
+            <a href="{% url 'property:favourite_add' property.id %}" class="inline-block mt-4 px-6 py-3 text-lg font-semibold bg-teal-500 text-white rounded-xl hover:bg-teal-700">Add to favourites</a>
+        </div>
+        {% endif %}
     </div>
-    {% else %}
-    <div class="text-center">
-        <a href="" class="inline-block mt-6 px-6 py-3 text-lg font-semibold bg-teal-500 text-white rounded-xl hover:bg-teal-700">Contact Seller</a>
-        <a href="{% url 'property:favourite_add' property.id %}" class="inline-block mt-4 px-6 py-3 text-lg font-semibold bg-teal-500 text-white rounded-xl hover:bg-teal-700">Add to favourites</a>
-    </div>
-    {% endif %}
 </div>
 
-```
+<div id="map" style="height: 400px; width: 100%;"></div>
 
-</div>
+{% block extra_js %}
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBQA2EzEFjy_o_nFwf3rUgcDW4wFcKEHFQ"></script>
+<script>
+    function initMap() {
+        var mapOptions = {
+            zoom: 15,
+            center: { lat: {{ property.latitude }}, lng: {{ property.longitude }} }
+        };
+        var map = new google.maps.Map(document.getElementById('map'), mapOptions);
+        var marker = new google.maps.Marker({
+            position: { lat: {{ property.latitude }}, lng: {{ property.longitude }} },
+            map: map,
+            title: '{{ property.description }}'
+        });
+    }
+    window.onload = initMap;
+</script>
+{% endblock %}
 {% endblock %}
