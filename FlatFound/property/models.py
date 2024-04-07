@@ -22,10 +22,11 @@ class Property(models.Model):
     ppw = models.FloatField()
     address = models.TextField(blank=True, null=True)
     postcode = models.TextField(blank=True, null=True)
+    pet_friendly = models.BooleanField(blank=True, null=True)
+    number_of_beds = models.IntegerField(blank=True, null=True)
+    number_of_bathrooms = models.IntegerField(blank=True, null=True)
     description = models.TextField(blank=True, null=True)
     image = models.ImageField(upload_to='prop_images', blank=True, null=True)
-    pet_friendly = models.BooleanField(blank=True, null=True)
-    num_beds = models.IntegerField(blank=True, null=True)
     favourites = models.ManyToManyField(User, related_name='favourite', default=None, blank=True)
     # If the user is deleted then so are their properties.
     created_by = models.ForeignKey(
