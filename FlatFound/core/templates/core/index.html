@@ -72,12 +72,7 @@
             <label for="postcode" class="block mb-2">Postcode</label>
             <input type="text" name="postcode" id="postcode" class="mb-4 w-full p-2 border rounded" placeholder="Enter postcode">
 
-            <!-- Radius Slider with Output to the Right -->
-            <div class="flex items-center mb-4">
-                <label for="radius" class="block mr-2">Radius (km)</label>
-                <input type="range" name="radius" id="radius" min="0" max="50" class="w-full" oninput="radiusValue.value=radius.value">
-                <output id="radiusValue" class="flex-none text-center w-12 ml-2">{{ radius|default:"25" }}</output>
-            </div>
+           
             
             <button type="button" class="w-full py-2 px-4 bg-teal-500 text-white rounded">Apply Filters</button>
         </form>
