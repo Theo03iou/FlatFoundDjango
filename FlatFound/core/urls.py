@@ -7,9 +7,9 @@ from .forms import LoginForm
 app_name = 'core'
 
 urlpatterns = [
-    path('', auth_views.LoginView.as_view(template_name='core/index.html',
-         authentication_form=LoginForm, next_page=''), name='login'),
-   path('login/', auth_views.LoginView.as_view(template_name='core/index.html',
+    path('', auth_views.LoginView.as_view(template_name='core/login.html',
+         authentication_form=LoginForm, next_page='core/index.html'), name='login'),
+    path('login/', auth_views.LoginView.as_view(template_name='core/login.html',
          authentication_form=LoginForm),  name='login'),
     path('contact/', views.contact, name='contact'),
     path('signup/', views.signup, name='signup'),

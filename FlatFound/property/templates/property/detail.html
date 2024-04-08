@@ -14,7 +14,7 @@
 <p class="text-gray-700">{{ property.description }}</p>
 </div>
 
-```
+
     <div class="grid grid-cols-2 gap-4 mb-6">
         <div class="bg-white rounded-xl p-4 flex items-center">
             <i class="fas fa-pound-sign text-lg text-gray-500 mr-2"></i>
@@ -26,8 +26,12 @@
         <div class="bg-white rounded-xl p-4 flex items-center">
             <i class="fas fa-user text-lg text-gray-500 mr-2"></i>
             <div>
-                <p class="font-semibold">Seller</p>
-                <p>{{ property.created_by.username }}</p>
+                <p class="font-semibold">Pet Friendly</p>
+                {% if property.pet_friendly == True %}
+                <p>Yes</p>
+                {% else %}
+                <p>No</p>
+                {% endif %}
             </div>
         </div>
     </div>
@@ -49,6 +53,23 @@
         </div>
     </div>
 
+    <div class="grid grid-cols-2 gap-4 mb-6">
+        <div class="bg-white rounded-xl p-4 flex items-center">
+            <i class="fas fa-map-marker-alt text-lg text-gray-500 mr-2"></i>
+            <div>
+                <p class="font-semibold">Bathrooms</p>
+                <p>{{ property.number_of_bathrooms }}</p>
+            </div>
+        </div>
+        <div class="bg-white rounded-xl p-4 flex items-center">
+            <i class="fas fa-calendar-alt text-lg text-gray-500 mr-2"></i>
+            <div>
+                <p class="font-semibold">Bedrooms</p>
+                <p>{{ property.number_of_beds }}</p>
+            </div>
+        </div>
+    </div>
+
     {% if request.user == property.created_by %}
     <div class="bg-white rounded-xl p-4 text-center">
         <p>This is your property!</p>
@@ -59,13 +80,21 @@
     </div>
     {% else %}
     <div class="text-center">
-        <a href="" class="inline-block mt-6 px-6 py-3 text-lg font-semibold bg-teal-500 text-white rounded-xl hover:bg-teal-700">Contact Seller</a>
-        <a href="{% url 'property:favourite_add' property.id %}" class="inline-block mt-4 px-6 py-3 text-lg font-semibold bg-teal-500 text-white rounded-xl hover:bg-teal-700">Add to favourites</a>
+        <a href="" class="inline-block m-6 px-6 py-6 text-lg font-semibold bg-teal-500 text-white rounded-xl hover:bg-teal-700">Email Seller</a>
+        <a href="{% url 'property:favourite_add' property.id %}" class="inline-flex items-center mt-4 px-6 py-6 text-lg font-semibold bg-teal-500 text-white rounded-xl hover:bg-teal-700">
+            Add to favourites
+            <svg class="w-6 h-6 ml-2 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 14 20">
+                <path d="M13 20a1 1 0 0 1-.64-.231L7 15.3l-5.36 4.469A1 1 0 0 1 0 19V2a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v17a1 1 0 0 1-1 1Z"/>
+            </svg>
+        </a>
+        
+        
+        
     </div>
     {% endif %}
 </div>
 
-```
+
 
 </div>
 {% endblock %}
