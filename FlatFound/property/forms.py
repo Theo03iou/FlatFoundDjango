@@ -77,3 +77,4 @@ class EditListingForm(forms.ModelForm):
                 'class': INPUT_CLASSES
         }),
         }
+        
