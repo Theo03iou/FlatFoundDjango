@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
 
 from .forms import NewListingForm, EditListingForm
-from .models import Category, Property
+from .models import Category, Property, Countries
 
 # Create your views here.
 
@@ -12,6 +12,7 @@ from .models import Category, Property
 def property(request):
     query = request.GET.get('query', '')
     length_id = request.GET.get('length', 0)
+    countries = Countries.objects.all()
     length_type = Category.objects.all()
     properties = Property.objects.all()
 
@@ -25,6 +26,7 @@ def property(request):
     return render(request, 'property/listings.html', {
         'properties': properties,
         'query': query,
+        'countries': countries,
         'length_type': length_type,
         'length_id': int(length_id)
     })

@@ -13,9 +13,21 @@ class Category(models.Model):
 
     def __str__(self):
         return self.name  # Shows the name of property on admin page
+    
+class Countries(models.Model):
+    name = models.CharField(max_length=255)
+    
+    class Meta:
+        ordering = ('name',)
+        verbose_name_plural = 'Countries'
+        
+    def __str__(self):
+        return self.name
 
 
 class Property(models.Model):
+    country = models.ForeignKey(Countries, related_name='countries', on_delete=models.CASCADE)
+    city = models.TextField(blank=True, null=True)
     category = models.ForeignKey(
         Category, related_name='properties', on_delete=models.CASCADE)
     price_pcm = models.IntegerField()
