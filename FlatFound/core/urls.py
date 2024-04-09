@@ -15,7 +15,11 @@ urlpatterns = [
     path('signup/', views.signup, name='signup'),
     path('index/', views.index, name='index'),
     path('logout/', auth_views.LogoutView.as_view(template_name='core/login.html',
-         next_page='core/login.html'), name='logout')
+         next_page='core/login.html'), name='logout'),
+    path('about/', views.about, name='about'),
+    path('infocontact/', views.infocontact, name='infocontact'),
+    path('privacypolicy/', views.privacypolicy, name='privacypolicy'),          # related to base links
+    path('terms/', views.terms, name='terms')
 ]
 
 # Attempting to make the login screen the default
