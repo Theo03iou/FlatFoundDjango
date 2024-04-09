@@ -9,12 +9,12 @@ class NewListingForm(forms.ModelForm):
     class Meta:
         model = Property
         fields = ('country', 'city', 'category',  'price_pcm', 'ppw', 'address', 'postcode',
-                  'pet_friendly', 'number_of_beds', 'number_of_bathrooms', 'description', 'image',)
+                  'pet_friendly', 'number_of_beds', 'number_of_bathrooms', 'description', 'image1', 'image2', 'image3', 'image4',)
         widgets = {
             'country': forms.Select(attrs={
                 'class': INPUT_CLASSES
             }),
-            'price_pcm': forms.TextInput(attrs={
+            'city': forms.TextInput(attrs={
                 'class': INPUT_CLASSES
             }),
             'category': forms.Select(attrs={
@@ -44,7 +44,16 @@ class NewListingForm(forms.ModelForm):
             'description': forms.Textarea(attrs={
                 'class': INPUT_CLASSES
             }),
-            'image': forms.FileInput(attrs={
+            'image1': forms.FileInput(attrs={
+                'class': INPUT_CLASSES
+            }),
+            'image2': forms.FileInput(attrs={
+                'class': INPUT_CLASSES
+            }),
+            'image3': forms.FileInput(attrs={
+                'class': INPUT_CLASSES
+            }),
+            'image4': forms.FileInput(attrs={
                 'class': INPUT_CLASSES
             }),
         }
@@ -54,12 +63,12 @@ class EditListingForm(forms.ModelForm):
     class Meta:
         model = Property
         fields = ('country', 'city', 'category',  'price_pcm', 'ppw', 'address', 'postcode',
-                  'pet_friendly', 'number_of_beds', 'number_of_bathrooms', 'description', 'image',)
+                  'pet_friendly', 'number_of_beds', 'number_of_bathrooms', 'description', 'image1', 'image2', 'image3', 'image4',)
         widgets = {
             'country': forms.Select(attrs={
                 'class': INPUT_CLASSES
             }),
-            'price_pcm': forms.TextInput(attrs={
+            'city': forms.TextInput(attrs={
                 'class': INPUT_CLASSES
             }),
             'category': forms.Select(attrs={
@@ -89,7 +98,16 @@ class EditListingForm(forms.ModelForm):
             'description': forms.Textarea(attrs={
                 'class': INPUT_CLASSES
             }),
-            'image': forms.FileInput(attrs={
+            'image1': forms.FileInput(attrs={
+                'class': INPUT_CLASSES
+            }),
+            'image2': forms.FileInput(attrs={
+                'class': INPUT_CLASSES
+            }),
+            'image3': forms.FileInput(attrs={
+                'class': INPUT_CLASSES
+            }),
+            'image4': forms.FileInput(attrs={
                 'class': INPUT_CLASSES
             }),
         }

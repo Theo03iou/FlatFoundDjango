@@ -38,7 +38,10 @@ class Property(models.Model):
     number_of_beds = models.IntegerField(blank=True, null=True)
     number_of_bathrooms = models.IntegerField(blank=True, null=True)
     description = models.TextField(blank=True, null=True)
-    image = models.ImageField(upload_to='prop_images', blank=True, null=True)
+    image1 = models.ImageField(upload_to='prop_images', blank=True, null=True)
+    image2 = models.ImageField(upload_to='prop_images', blank=True, null=True)
+    image3 = models.ImageField(upload_to='prop_images', blank=True, null=True)
+    image4 = models.ImageField(upload_to='prop_images', blank=True, null=True)
     favourites = models.ManyToManyField(User, related_name='favourite', default=None, blank=True)
     # If the user is deleted then so are their properties.
     created_by = models.ForeignKey(

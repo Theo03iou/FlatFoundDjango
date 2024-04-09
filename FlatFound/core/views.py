@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import logout
-from property.models import Category, Property
+from property.models import Category, Property, Countries
 
 from .forms import SignupForm
 
@@ -9,8 +9,10 @@ from .forms import SignupForm
 def index(request):
     properties = Property.objects.all()[0:6]
     categories = Category.objects.all
+    countries = Countries.objects.all
     
     return render(request, 'core/index.html', {
+        'countries': countries,
         'categories': categories,
         'properties': properties
     })
