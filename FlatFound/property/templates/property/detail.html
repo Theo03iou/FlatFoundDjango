@@ -4,8 +4,11 @@
 
 {% block content %}
 <div class="grid grid-cols-5 gap-6">
-<div class="col-span-3">
-<img src="{{ property.image.url }}" class="rounded-xl" alt="">
+<div class="col-span-2">
+<img src="{{ property.image1.url }}" class="rounded-xl mb-6" alt="">
+<img src="{{ property.image2.url }}" class="rounded-xl" alt="">
+<img src="{{ property.image3.url }}" class="rounded-xl" alt="">
+<img src="{{ property.image4.url }}" class="rounded-xl" alt="">
 </div>
 <div class="col-span-2 p-6 bg-gray-100 rounded-xl">
 <h1 class="text-3xl mb-4">Property Details</h1>
@@ -49,6 +52,23 @@
             <div>
                 <p class="font-semibold">Tenancy Length</p>
                 <p>{{ property.category.name }}</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="grid grid-cols-2 gap-4 mb-6">
+        <div class="bg-white rounded-xl p-4 flex items-center">
+            <i class="fas fa-map-marker-alt text-lg text-gray-500 mr-2"></i>
+            <div>
+                <p class="font-semibold">Country</p>
+                <p>{{ property.countries.name }}</p>
+            </div>
+        </div>
+        <div class="bg-white rounded-xl p-4 flex items-center">
+            <i class="fas fa-calendar-alt text-lg text-gray-500 mr-2"></i>
+            <div>
+                <p class="font-semibold">City</p>
+                <p>{{ property.city }}</p>
             </div>
         </div>
     </div>
