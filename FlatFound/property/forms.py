@@ -14,7 +14,7 @@ class NewListingForm(forms.ModelForm):
             'country': forms.Select(attrs={
                 'class': INPUT_CLASSES
             }),
-            'city': forms.TextInput(attrs={
+            'price_pcm': forms.TextInput(attrs={
                 'class': INPUT_CLASSES
             }),
             'category': forms.Select(attrs={
@@ -59,7 +59,7 @@ class EditListingForm(forms.ModelForm):
             'country': forms.Select(attrs={
                 'class': INPUT_CLASSES
             }),
-            'city': forms.TextInput(attrs={
+            'price_pcm': forms.TextInput(attrs={
                 'class': INPUT_CLASSES
             }),
             'category': forms.Select(attrs={
