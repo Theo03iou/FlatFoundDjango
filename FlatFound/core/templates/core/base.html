@@ -23,7 +23,7 @@
         }
 
         .menu-option:hover {
-            color: neon-yellow;
+            color: #ccff66;
         }
     </style>
 </head>
@@ -33,11 +33,11 @@
         <a href="{% url 'core:index' %}" class="text-xl font-semibold text-white">FlatFound</a> 
         <div class="space-x-6">
           
-            <a href="{% url 'property:properties' %}" class="text-lg font-semibold menu-option hover:text-yellow-500">Browse</a>
-            <a href="{% url 'dashboard:index' %}" class="text-lg font-semibold menu-option hover:text-green-500">Dashboard</a>
-            <a href="{% url 'property:new' %}" class="text-lg font-semibold menu-option hover:text-green-500">New Listing</a>
-            <a href="{% url 'property:favourite_list' %}" class="text-lg font-semibold menu-option hover:text-green-500">Favourites</a>
-            <a href="{% url 'core:logout' %}" class="text-lg font-semibold menu-option hover:text-green-500">Logout</a>
+            <a href="{% url 'property:properties' %}" class="text-lg font-semibold menu-option">Browse</a>
+            <a href="{% url 'dashboard:index' %}" class="text-lg font-semibold menu-option">Dashboard</a>
+            <a href="{% url 'property:new' %}" class="text-lg font-semibold menu-option">New Listing</a>
+            <a href="{% url 'property:favourite_list' %}" class="text-lg font-semibold menu-option">Favourites</a>
+            <a href="{% url 'core:logout' %}" class="text-lg font-semibold menu-option">Logout</a>
             
         {% else %}
         <a href="{% url 'core:login' %}" class="text-xl font-semibold">FlatFound</a> 
