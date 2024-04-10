@@ -16,7 +16,7 @@
         <ul>
             {% for category in categories %}
                 <li class="py-2 px-2 rounded-xl {% if category.id == category_id %} bg-gray-200 {% endif %}">
-                    <a href="{% url 'property:properties' %}?query={{ query }}&category={{ category.id }}">{{ category.name }}</a>
+                    <a href="{% url 'property:properties' %}?query={{ query }}&category={{ category.id }}">{{ category.name }}{{ category.id }}</a>
                 </li>
                 {% endfor %}
             
@@ -31,7 +31,7 @@
             
                 {% for countries in countries %}
                 <li class="py-2 px-2 rounded-xl {% if countries.id == countries_id %} bg-gray-200 {% endif %}">
-                    <a href="{% url 'property:properties' %}?query={{ query }}&countries={{ countries.id }}">{{ countries.name }}</a>
+                    <a href="{% url 'property:properties' %}?query={{ query }}&countries={{ countries.id }}">{{ countries.name }} {{ countries.id }}</a>
                 </li>
             {% endfor %}
 
