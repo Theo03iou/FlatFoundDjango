@@ -8,25 +8,43 @@
         <form action="{% url 'property:properties' %}" method="get">
             <input name="query" value="{{ query }}" type="text" class="w-full py-4 px-6 border rounded-xl" placeholder="Enter a Country, City or Postcode">
             <button class="mt-2 py-4 px-8 text-lg bg-teal-500 text-white rounded-xl">Search</button>
+            <a href="{% url 'property:properties' %}" class="mt-2 py-4 px-8 inline-block bg-yellow-500 text-lg rounded-xl text-white">Remove Filters</a>
+        </ul>
         </form>
         <hr class="my-6">
-        <p class="font-semibold">Categories</p>
+        <p class="font-semibold">Duration of renting</p>
         <ul>
             {% for category in categories %}
                 <li class="py-2 px-2 rounded-xl {% if category.id == category_id %} bg-gray-200 {% endif %}">
-                    <a href="{% url 'property:properties' %}?query={{ query }}&category={{ category.id }}"{{ category.name }}></a>
+                    <a href="{% url 'property:properties' %}?query={{ query }}&category={{ category.id }}">{{ category.name }}</a>
                 </li>
                 {% endfor %}
+            
+                
+
         </ul>
 
         <hr class="my-6">
-        <p class="font-semibold">Clear Filters</p>
+        <p class="font-semibold">Country</p>
         <ul>
-            <li><a href="{% url 'property:properties' %}" class="mt-2 py-4 px-8 inline-block bg-yellow-500 text-lg rounded-xl text-white">Clear</a></li>
+            
+            
+                {% for countries in countries %}
+                <li class="py-2 px-2 rounded-xl {% if countries.id == countries_id %} bg-gray-200 {% endif %}">
+                    <a href="{% url 'property:properties' %}?query={{ query }}&countries={{ countries.id }}">{{ countries.name }}</a>
+                </li>
+            {% endfor %}
+
         </ul>
+
+
+        <hr class="my-6">
+        
     </div>
     <div class="col-span-3">
         {% for property in properties %}
+        {% if request.user != property.created_by %}
+
         <div>
             <a href="{% url 'property:detail' property.id %}">
                 <div>
@@ -39,6 +57,7 @@
                 </div>
             </a>
         </div>
+        {% endif %}
         {% endfor %}
     </div>
 </div>

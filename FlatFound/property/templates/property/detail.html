@@ -1,14 +1,14 @@
 {% extends 'core/base.html' %}
 {% load static %} {# Ensure you have this at the top if you're using static files #}
-{% block title %} {{ property.description }} {% endblock %}
 
 {% block content %}
+
 <div class="grid grid-cols-5 gap-6">
 <div class="col-span-2">
 <img src="{{ property.image1.url }}" class="rounded-xl mb-6" alt="">
-<img src="{{ property.image2.url }}" class="rounded-xl" alt="">
-<img src="{{ property.image3.url }}" class="rounded-xl" alt="">
-<img src="{{ property.image4.url }}" class="rounded-xl" alt="">
+<img src="{{ property.image2.url }}" class="rounded-xl mb-6" alt="">
+<img src="{{ property.image3.url }}" class="rounded-xl mb-6" alt="">
+<img src="{{ property.image4.url }}" class="rounded-xl mb-6" alt="">
 </div>
 <div class="col-span-2 p-6 bg-gray-100 rounded-xl">
 <h1 class="text-3xl mb-4">Property Details</h1>
@@ -22,8 +22,8 @@
         <div class="bg-white rounded-xl p-4 flex items-center">
             <i class="fas fa-pound-sign text-lg text-gray-500 mr-2"></i>
             <div>
-                <p class="font-semibold">Price per week (PPW)</p>
-                <p>{{ property.ppw }}</p>
+                <p class="font-semibold">Price per week</p>
+                <p>£{{ property.ppw }}</p>
             </div>
         </div>
         <div class="bg-white rounded-xl p-4 flex items-center">

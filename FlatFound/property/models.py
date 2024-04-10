@@ -28,8 +28,7 @@ class Countries(models.Model):
 class Property(models.Model):
     country = models.ForeignKey(Countries, related_name='countries', on_delete=models.CASCADE)
     city = models.TextField(blank=True, null=True)
-    category = models.ForeignKey(
-        Category, related_name='properties', on_delete=models.CASCADE)
+    category = models.ForeignKey(Category, related_name='properties', on_delete=models.CASCADE)
     price_pcm = models.IntegerField()
     ppw = models.FloatField()
     address = models.TextField(blank=True, null=True)

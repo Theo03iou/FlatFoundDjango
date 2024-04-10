@@ -11,13 +11,14 @@ from .models import Category, Property, Countries
 
 def property(request):
     query = request.GET.get('query', '')
-    length_id = request.GET.get('length', 0)
+    category_id = request.GET.get('category', 0)
     countries = Countries.objects.all()
+    countries_id = request.GET.get('countries', 0)
     length_type = Category.objects.all()
     properties = Property.objects.all()
 
-    if length_id:
-        properties = properties.filter(length_id=length_id)
+    if category_id:
+        properties = properties.filter(category_id=category_id)
 
     if query:
         properties = properties.filter(
@@ -27,8 +28,9 @@ def property(request):
         'properties': properties,
         'query': query,
         'countries': countries,
+        'countries_id': int(countries_id),
         'categories': length_type,
-        'length_id': int(length_id)
+        'category_id': int(category_id)
     })
 
 
