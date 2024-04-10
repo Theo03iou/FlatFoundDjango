@@ -27,7 +27,7 @@ def property(request):
         'properties': properties,
         'query': query,
         'countries': countries,
-        'length_type': length_type,
+        'categories': length_type,
         'length_id': int(length_id)
     })
 
