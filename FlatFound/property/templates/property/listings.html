@@ -47,6 +47,7 @@
     <h2 class="mb-12 text-2xl text-center">Related properties</h2>
     <div class="grid grid-cols-3 gap-3">
         {% for property in properties %}
+        {% if request.user != property.created_by %}
         <div>
             <a href="{% url 'property:detail' property.id %}">
                 <div class="">
@@ -59,6 +60,7 @@
                 </div>
             </a>
         </div>
+        {% endif %}
         {% endfor %}
     </div>
 </div> 
