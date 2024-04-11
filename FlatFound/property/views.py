@@ -7,7 +7,6 @@ from .forms import NewListingForm, EditListingForm
 from .models import Category, Property, Countries
 
 # Create your views here.
-
 from django.shortcuts import render
 from django.db.models import Q
 from .models import Property, Category, Countries
@@ -16,7 +15,6 @@ def property(request):
     query = request.GET.get('query', '')
     category_id = request.GET.get('category', 0)
     selected_country_id = request.GET.get('countries', '')
-    selected_duration_id = request.GET.get('duration', '')
     
     # Retrieve all categories and countries for the filter options
     categories = Category.objects.all()
@@ -32,13 +30,13 @@ def property(request):
     if selected_country_id:
         properties = properties.filter(country_id=selected_country_id)
     
-    if selected_duration_id:
-        properties = properties.filter(duration_id=selected_duration_id)
-    
     # Apply search query if provided
     if query:
         properties = properties.filter(
             Q(postcode__icontains=query) | Q(description__icontains=query))
+    
+    # Convert selected_country_id to integer with default value 0 if empty string
+    selected_country_id = int(selected_country_id) if selected_country_id else 0
     
     return render(request, 'property/listings.html', {
         'properties': properties,
@@ -47,7 +45,6 @@ def property(request):
         'countries': countries,
         'selected_category_id': int(category_id),
         'selected_country_id': selected_country_id,
-        'selected_duration_id': selected_duration_id
     })
 
 
