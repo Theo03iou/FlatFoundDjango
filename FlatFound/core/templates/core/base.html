@@ -36,7 +36,7 @@
 <body>
     <nav class="px-16 py-7 flex justify-between items-center border-b border-gray-200 bg-black text-white">
         <a href="{% url 'core:index' %}" class="flex items-center space-x-2">
-            <img src="FlatFound/core/templates/core/Logo.jpg" alt="Logo">
+            <img src="{% static 'core/Logo.jpg' %}" alt="Logo">
             <span class="text-xl font-semibold title-option">FlatFound</span>
         </a>
         <div class="space-x-6">
