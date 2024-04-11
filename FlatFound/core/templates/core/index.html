@@ -8,7 +8,7 @@
 <div class="mt-6 px-6 py-12 bg-gray-100 rounded-xl">
     <h2 class="mb-12 text-2xl text-center">Newest Listings</h2>
     <div class="grid grid-cols-3 gap-3">
-        {% for property in properties %}
+        {% for property in properties reversed %}
         {% if request.user != property.created_by %}
 
         <div>

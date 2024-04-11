@@ -42,9 +42,9 @@
         <div class="space-x-6">
             {% if request.user.is_authenticated %}
                 <a href="{% url 'property:properties' %}" class="text-lg font-semibold menu-option">Browse</a>
+                <a href="{% url 'property:favourite_list' %}" class="text-lg font-semibold menu-option">Favourites</a>
                 <a href="{% url 'dashboard:index' %}" class="text-lg font-semibold menu-option">Dashboard</a>
                 <a href="{% url 'property:new' %}" class="text-lg font-semibold menu-option">New Listing</a>
-                <a href="{% url 'property:favourite_list' %}" class="text-lg font-semibold menu-option">Favourites</a>
                 <a href="{% url 'core:logout' %}" class="text-lg font-semibold menu-option">Logout</a>
             {% else %}
                 <a href="{% url 'core:signup' %}" class="px-6 py-3 text-lg font-semibold bg-teal-500 text-white rounded-xl hover:bg-teal-700 hover:text-ccff66">Sign Up</a>
