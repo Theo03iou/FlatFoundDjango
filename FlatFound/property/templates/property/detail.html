@@ -104,4 +104,14 @@
                 <a href="{% url 'property:favourite_add' property.id %}" class="inline-flex items-center mt-4 px-6 py-6 text-lg font-semibold bg-teal-500 text-white rounded-xl hover:bg-teal-700">
                     Add to favourites
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 inline-block align-middle ml-2">
-                        <path d="m11.645 20.91-.007-.003-.022-.012a15.247 15.247 0 0 1-.383-.218 25.18
+                        <path d="m11.645 20.91-.007-.003-.022-.012a15.247 15.247 0 0 1-.383-.218 25.18247 25.18 0 0 1-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0 1 12 5.052 5.5 5.5 0 0 1 16.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 0 1-4.244 3.17 15.247 15.247 0 0 1-.383.219l-.022.012-.007.004-.003.001a.752.752 0 0 1-.704 0l-.003-.001Z" />
+                    </svg>
+                </a>
+            </div>
+        {% endif %}
+        <iframe src="https://maps.google.com/maps?q={{property.postcode}}&amp;t=&amp;z=13&amp;ie=UTF8&amp;iwloc=&amp;output=embed" width="100%" height="480" allowfullscreen=""></iframe>
+    </div>
+</div>
+
+{% endblock %}
+
