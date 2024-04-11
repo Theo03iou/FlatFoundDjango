@@ -4,41 +4,38 @@
 {% block content %}
 
 <div class="grid grid-cols-5 gap-6">
-<div class="col-span-2">
-<img src="{{ property.image1.url }}" class="rounded-xl mb-6" alt="">
-<img src="{{ property.image2.url }}" class="rounded-xl mb-6" alt="">
-<img src="{{ property.image3.url }}" class="rounded-xl mb-6" alt="">
-<img src="{{ property.image4.url }}" class="rounded-xl mb-6" alt="">
-</div>
-<div class="col-span-2 p-6 bg-gray-100 rounded-xl">
-<h1 class="text-3xl mb-4">Property Details</h1>
-<div class="bg-white rounded-xl p-4 mb-6">
-<h2 class="text-xl font-semibold mb-2">Description</h2>
-<p class="text-gray-700">{{ property.description }}</p>
-</div>
-
-
-    <div class="grid grid-cols-2 gap-4 mb-6">
-        <div class="bg-white rounded-xl p-4 flex items-center">
-            <i class="fas fa-pound-sign text-lg text-gray-500 mr-2"></i>
-            <div>
-                <p class="font-semibold">Price per week</p>
-                <p>£{{ property.ppw }}</p>
-            </div>
-        </div>
-        <div class="bg-white rounded-xl p-4 flex items-center">
-            <i class="fas fa-user text-lg text-gray-500 mr-2"></i>
-            <div>
-                <p class="font-semibold">Pet Friendly</p>
-                {% if property.pet_friendly == True %}
-                <p>Yes</p>
-                {% else %}
-                <p>No</p>
-                {% endif %}
-            </div>
-        </div>
+    <div class="col-span-2">
+        <img src="{{ property.image1.url }}" class="rounded-xl mb-6" alt="">
+        <img src="{{ property.image2.url }}" class="rounded-xl mb-6" alt="">
+        <img src="{{ property.image3.url }}" class="rounded-xl mb-6" alt="">
+        <img src="{{ property.image4.url }}" class="rounded-xl mb-6" alt="">
     </div>
-
+    <div class="col-span-2 p-6 bg-gray-100 rounded-xl">
+        <h1 class="text-3xl mb-4">Property Details</h1>
+        <div class="bg-white rounded-xl p-4 mb-6">
+            <h2 class="text-xl font-semibold mb-2">Description</h2>
+            <p class="text-gray-700">{{ property.description }}</p>
+        </div>
+        <div class="grid grid-cols-2 gap-4 mb-6">
+            <div class="bg-white rounded-xl p-4 flex items-center">
+                <i class="fas fa-pound-sign text-lg text-gray-500 mr-2"></i>
+                <div>
+                    <p class="font-semibold">Price per week</p>
+                    <p>£{{ property.ppw }}</p>
+                </div>
+            </div>
+            <div class="bg-white rounded-xl p-4 flex items-center">
+                <i class="fas fa-user text-lg text-gray-500 mr-2"></i>
+                <div>
+                    <p class="font-semibold">Pet Friendly</p>
+                    {% if property.pet_friendly == True %}
+                        <p>Yes</p>
+                    {% else %}
+                        <p>No</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
     <div class="grid grid-cols-2 gap-4 mb-6">
         <div class="bg-white rounded-xl p-4 flex items-center">
             <i class="fas fa-map-marker-alt text-lg text-gray-500 mr-2"></i>
