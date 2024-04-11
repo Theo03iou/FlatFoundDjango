@@ -16,7 +16,7 @@
         <ul>
             {% for category in categories %}
                 <li class="py-2 px-2 rounded-xl {% if category.id == category_id %} bg-gray-200 {% endif %}">
-                    <a href="{% url 'property:properties' %}?query={{ query }}&category={{ category.id }}">{{ category.name }}{{ category.id }}</a>
+                    <a href="{% url 'property:properties' %}?query={{ query }}&category={{ category.id }}">{{ category.name }}</a>
                 </li>
                 {% endfor %}
             
@@ -51,9 +51,9 @@
                     <img src="{{ property.image1.url }}" alt="" class="rounded-t-xl">
                 </div>
                 <div class="p-6 bg-white rounded-b-xl">
-                    <h2 class="text-2xl">PCM: £{{ property.price_PCM }}</h2>
+                    <h2 class="text-2xl">PCM: £{{property.price_PCM}} </h2>
                     <h2 class="text-1xl">Tenancy Length: {{property.category}} </h2>
-                    <p class="text-gray-500">Postcode: {{ property.postcode }}</p>
+                    <p class="text-gray-500">Postcode: {{property.postcode}}, {{property.city}}</p>
                 </div>
             </a>
         </div>
@@ -61,28 +61,5 @@
         {% endfor %}
     </div>
 </div>
-
-<div class="mt-6 px-6 py-12 bg-gray-100 rounded-xl">
-    <h2 class="mb-12 text-2xl text-center">Related properties</h2>
-    <div class="grid grid-cols-3 gap-3">
-        {% for property in properties %}
-        {% if request.user != property.created_by %}
-        <div>
-            <a href="{% url 'property:detail' property.id %}">
-                <div class="">
-                    <img src="{{property.image1.url }}" alt="" class="rounded-t-xl">
-                </div>
-                <div class="p-6 bg-white rounded-b-xl">
-                    <h2 class="text-2xl">PCM: £{{ property.price_PCM }}</h2>
-                    <h2 class="text-1xl">Tenancy Length: {{property.category}} </h2>
-                    <p class="text-gray-500">Postcode: {{ property.postcode }}</p>
-                </div>
-            </a>
-        </div>
-        {% endif %}
-        {% endfor %}
-    </div>
-</div> 
-
 
 {% endblock %} 
