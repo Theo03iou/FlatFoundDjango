@@ -51,7 +51,7 @@
                     <img src="{{ property.image1.url }}" alt="" class="rounded-t-xl">
                 </div>
                 <div class="p-6 bg-white rounded-b-xl">
-                    <h2 class="text-2xl">PCM: £{{ property.price_pcm }}</h2>
+                    <h2 class="text-2xl">PCM: £{{ property.price_PCM }}</h2>
                     <h2 class="text-1xl">Tenancy Length: {{property.category}} </h2>
                     <p class="text-gray-500">Postcode: {{ property.postcode }}</p>
                 </div>
@@ -73,9 +73,9 @@
                     <img src="{{property.image1.url }}" alt="" class="rounded-t-xl">
                 </div>
                 <div class="p-6 bg-white rounded-b-xl">
-                    <h2 class="text-2xl">PCM: {{property.price_pcm}}</h2>
+                    <h2 class="text-2xl">PCM: £{{ property.price_PCM }}</h2>
                     <h2 class="text-1xl">Tenancy Length: {{property.category}} </h2>
-                    <p class="text-gray-500">ppw: {{property.ppw}}</p>
+                    <p class="text-gray-500">Postcode: {{ property.postcode }}</p>
                 </div>
             </a>
         </div>

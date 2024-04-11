@@ -4,33 +4,29 @@
 
 {% block content %}
 
-<div class="flex">
 
-    
-    <div class="w-3/4">
-        <div class="mt-6 px-6 py-12 bg-gray-100 rounded-xl">
-            <h2 class="mb-12 text-2xl text-center">Newest Listings</h2>
-            <div class="grid grid-cols-3 gap-3 mt-6">
-                {% for property in properties %}
-                {% if request.user != property.created_by %}
+<div class="mt-6 px-6 py-12 bg-gray-100 rounded-xl">
+    <h2 class="mb-12 text-2xl text-center">Newest Listings</h2>
+    <div class="grid grid-cols-3 gap-3">
+        {% for property in properties %}
+        {% if request.user != property.created_by %}
 
-                <div>
-                    <a href="{% url 'property:detail' property.id %}">
-                        <div>
-                            <img src="{{ property.image1.url }}" alt="" class="rounded-t-xl">
-                        </div>
-                        <div class="p-6 bg-white rounded-b-xl border-2">
-                            <h2 class="text-2xl">PCM: £{{property.price_pcm}}</h2>
-                            <h2 class="text-1xl">Tenancy Length: {{property.category}} </h2>
-                            <p class="text-gray-500">{{property.postcode}}, {{property.city}} </p>
-                        </div>
-                    </a>
+        <div>
+            <a href="{% url 'property:detail' property.id %}">
+                <div class="">
+                    <img src="{{ property.image1.url }}" alt="" class="rounded-t-xl">
                 </div>
-                {% endif %}
-                {% endfor %}
-            </div>
+                <div class="p-6 bg-white rounded-b-xl">
+                    <h2 class="text-2xl">PCM: {{property.price_pcm}} </h2>
+                    <h2 class="text-1xl">Tenancy Length: {{property.category}} </h2>
+                    <p class="text-gray-500">Postcode: {{property.postcode}}</p>
+                </div>
+            </a>
         </div>
+        {% endif %}
+        {% endfor %}
     </div>
-</div> 
+</div>
+
 
 {% endblock %}
