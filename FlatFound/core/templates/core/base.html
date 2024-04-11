@@ -35,26 +35,27 @@
 </head>
 <body>
     <nav class="px-16 py-7 flex justify-between items-center border-b border-gray-200 bg-black text-white">
+        {% if request.user.is_authenticated %}
         <a href="{% url 'core:index' %}" class="flex items-center space-x-2">
-            <img src="{% static 'core/Logo.jpg' %}" alt="Logo">
             <span class="text-xl font-semibold title-option">FlatFound</span>
         </a>
         <div class="space-x-6">
-            {% if request.user.is_authenticated %}
             {% csrf_token %}
-                <a href="{% url 'property:properties' %}" class="text-lg font-semibold menu-option">Browse</a>
-                <a href="{% url 'property:favourite_list' %}" class="text-lg font-semibold menu-option">Favourites</a>
-                <a href="{% url 'dashboard:index' %}" class="text-lg font-semibold menu-option">Dashboard</a>
-                <a href="{% url 'property:new' %}" class="text-lg font-semibold menu-option">New Listing</a>
-                <form action="{% url 'core:logout' %}" method="post">
-                    {% csrf_token %}
-                    <button class="text-lg font-semibold menu-option" type="submit">Logout</button>
-                </form>
-            {% else %}
-                <a href="{% url 'core:signup' %}" class="px-6 py-3 text-lg font-semibold bg-teal-500 text-white rounded-xl hover:bg-teal-700 hover:text-ccff66">Sign Up</a>
-                <a href="{% url 'core:login' %}" class="px-6 py-3 text-lg font-semibold bg-gray-500 text-white rounded-xl hover:bg-gray-700 hover:text-ccff66">Login</a>
-            {% endif %}
+            <a href="{% url 'property:properties' %}" class="text-lg font-semibold menu-option">Browse</a>
+            <a href="{% url 'property:favourite_list' %}" class="text-lg font-semibold menu-option">Favourites</a>
+            <a href="{% url 'dashboard:index' %}" class="text-lg font-semibold menu-option">Dashboard</a>
+            <a href="{% url 'property:new' %}" class="text-lg font-semibold menu-option">New Listing</a>
+            
         </div>
+        {% else %}
+        <a href="{% url 'core:login' %}" class="flex items-center space-x-2">
+            <span class="text-xl font-semibold title-option">FlatFound</span>
+        </a>
+        <div class="space-x-6 ml-auto">
+            <a href="{% url 'core:signup' %}" class="px-6 py-3 text-lg font-semibold bg-teal-500 text-white rounded-xl hover:bg-teal-700 hover:text-ccff66">Sign Up</a>
+            <a href="{% url 'core:login' %}" class="px-6 py-3 text-lg font-semibold bg-gray-500 text-white rounded-xl hover:bg-gray-700 hover:text-ccff66">Login</a>
+        </div>
+        {% endif %}
     </nav>
     
     <div class="px-6 py-6 flex-grow">{% block content %} {% endblock %}</div>
@@ -74,6 +75,10 @@
                 <li><a href="https://www.fdmgroup.com/about-us/contact-us/" class="text-lg footer-link">Contact us</a></li>
                 <li><a href="https://www.fdmgroup.com/privacy-policy/" class="text-lg footer-link">Privacy Policy</a></li>
                 <li><a href="https://www.fdmgroup.com/terms-conditions/" class="text-lg footer-link">Terms of use</a></li>
+                <li><form action="{% url 'core:logout' %}" method="post" class="text-lg footer-link">
+                    {% csrf_token %}
+                    <button type="submit">Logout</button>
+                </form></li>
             </ul>
         </div>
     </footer>
