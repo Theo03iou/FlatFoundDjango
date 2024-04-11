@@ -11,7 +11,7 @@ urlpatterns = [
     path('contact/', views.contact, name='contact'),
     path('signup/', views.signup, name='signup'),
     path('index/', views.index, name='index'),
-    path('logout/', auth_views.LogoutView.as_view(next_page='core/login.html'), name='logout'),
+    path('logout/', auth_views.LogoutView.as_view(next_page='/'), name='logout'),
     path('about/', views.about, name='about'),
     path('infocontact/', views.infocontact, name='infocontact'),
     path('privacypolicy/', views.privacypolicy, name='privacypolicy'),
